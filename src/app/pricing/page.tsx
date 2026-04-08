@@ -20,7 +20,27 @@ export default function Pricing() {
       </header>
 
       {/* Hero */}
-      <section className="mx-auto max-w-6xl px-6 py-24 text-center">
+      <section className="mx-auto max-w-6xl px-6 py-24 text-center relative overflow-hidden">
+        {/* Grid line background */}
+        <svg aria-hidden="true" className="pointer-events-none absolute inset-0 h-full w-full" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="pricing-grid" width="48" height="48" patternUnits="userSpaceOnUse">
+              <path d="M 48 0 L 0 0 0 48" fill="none" stroke="currentColor" strokeOpacity="0.05" strokeWidth="1" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#pricing-grid)" />
+        </svg>
+        {/* Radial glow */}
+        <svg aria-hidden="true" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg" className="pointer-events-none absolute left-1/2 top-1/2 w-[600px] -translate-x-1/2 -translate-y-1/2">
+          <defs>
+            <radialGradient id="pricing-glow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stopColor="currentColor" stopOpacity="0.04" />
+              <stop offset="100%" stopColor="currentColor" stopOpacity="0" />
+            </radialGradient>
+          </defs>
+          <rect width="400" height="300" fill="url(#pricing-glow)" />
+        </svg>
+
         <p className="text-sm font-medium text-muted-foreground uppercase tracking-widest mb-4">
           Pricing
         </p>
@@ -30,11 +50,32 @@ export default function Pricing() {
         <p className="text-lg text-muted-foreground max-w-xl mx-auto">
           Start for free. Scale as you grow. No hidden fees, no surprises.
         </p>
+
+        {/* Tier bars illustration */}
+        <div aria-hidden="true" className="pointer-events-none mt-14 mx-auto max-w-sm opacity-[0.45]">
+          <svg viewBox="0 0 360 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
+            <rect x="10" y="65" width="90" height="28" rx="5" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.5" />
+            <rect x="135" y="25" width="90" height="68" rx="5" stroke="currentColor" strokeWidth="2" strokeOpacity="0.8" />
+            <rect x="260" y="45" width="90" height="48" rx="5" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.6" />
+            <circle cx="55" cy="79" r="3" fill="currentColor" fillOpacity="0.5" />
+            <circle cx="180" cy="59" r="4" fill="currentColor" fillOpacity="0.8" />
+            <circle cx="305" cy="69" r="3.5" fill="currentColor" fillOpacity="0.6" />
+            <line x1="10" y1="96" x2="350" y2="96" stroke="currentColor" strokeWidth="1" strokeOpacity="0.2" />
+          </svg>
+        </div>
       </section>
 
       {/* Pricing tiers */}
-      <section className="border-t border-border bg-muted/40">
-        <div className="mx-auto max-w-6xl px-6 py-24">
+      <section className="border-t border-border bg-muted/40 relative overflow-hidden">
+        <svg aria-hidden="true" className="pointer-events-none absolute inset-0 h-full w-full" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="tiers-dots" width="28" height="28" patternUnits="userSpaceOnUse">
+              <circle cx="14" cy="14" r="1" fill="currentColor" fillOpacity="0.06" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#tiers-dots)" />
+        </svg>
+        <div className="mx-auto max-w-6xl px-6 py-24 relative">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {tiers.map((tier) => (
               <div
@@ -48,7 +89,8 @@ export default function Pricing() {
                     Most popular
                   </span>
                 )}
-                <h2 className="text-xl font-semibold mb-1">{tier.name}</h2>
+                <TierIcon name={tier.name} />
+                <h2 className="text-xl font-semibold mb-1 mt-4">{tier.name}</h2>
                 <p className="text-sm text-muted-foreground mb-6">{tier.description}</p>
                 <div className="mb-8">
                   <span className="text-4xl font-bold tracking-tight">{tier.price}</span>
@@ -116,6 +158,41 @@ export default function Pricing() {
         </div>
       </footer>
     </div>
+  );
+}
+
+function TierIcon({ name }: { name: string }) {
+  if (name === "Free") {
+    return (
+      <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8">
+        <circle cx="16" cy="16" r="4" stroke="currentColor" strokeWidth="1.5" />
+        <circle cx="16" cy="16" r="10" stroke="currentColor" strokeWidth="1" strokeOpacity="0.4" strokeDasharray="2 4" />
+        <circle cx="16" cy="16" r="15" stroke="currentColor" strokeWidth="0.5" strokeOpacity="0.2" strokeDasharray="2 6" />
+      </svg>
+    );
+  }
+  if (name === "Pro") {
+    return (
+      <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8">
+        <circle cx="16" cy="16" r="3" fill="currentColor" />
+        <circle cx="16" cy="16" r="9" stroke="currentColor" strokeWidth="1.5" />
+        <circle cx="25" cy="16" r="2.5" fill="currentColor" fillOpacity="0.7" />
+        <circle cx="16" cy="7" r="2" fill="currentColor" fillOpacity="0.5" />
+      </svg>
+    );
+  }
+  return (
+    <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8">
+      <circle cx="16" cy="16" r="3" fill="currentColor" />
+      <line x1="16" y1="16" x2="4" y2="8" stroke="currentColor" strokeWidth="1" strokeOpacity="0.5" />
+      <line x1="16" y1="16" x2="28" y2="8" stroke="currentColor" strokeWidth="1" strokeOpacity="0.5" />
+      <line x1="16" y1="16" x2="4" y2="24" stroke="currentColor" strokeWidth="1" strokeOpacity="0.5" />
+      <line x1="16" y1="16" x2="28" y2="24" stroke="currentColor" strokeWidth="1" strokeOpacity="0.5" />
+      <circle cx="4" cy="8" r="2.5" fill="currentColor" fillOpacity="0.5" />
+      <circle cx="28" cy="8" r="2.5" fill="currentColor" fillOpacity="0.5" />
+      <circle cx="4" cy="24" r="2.5" fill="currentColor" fillOpacity="0.5" />
+      <circle cx="28" cy="24" r="2.5" fill="currentColor" fillOpacity="0.5" />
+    </svg>
   );
 }
 

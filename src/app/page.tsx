@@ -20,7 +20,23 @@ export default function Home() {
       </header>
 
       {/* Hero */}
-      <section className="mx-auto max-w-6xl px-6 py-32 text-center">
+      <section className="mx-auto max-w-6xl px-6 py-32 text-center relative overflow-hidden">
+        {/* Dot grid */}
+        <svg aria-hidden="true" className="pointer-events-none absolute inset-0 h-full w-full" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="hero-dots" width="28" height="28" patternUnits="userSpaceOnUse">
+              <circle cx="14" cy="14" r="1" fill="currentColor" fillOpacity="0.07" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#hero-dots)" />
+        </svg>
+        {/* Orbital ring backdrop */}
+        <svg aria-hidden="true" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg" className="pointer-events-none absolute left-1/2 top-1/2 w-[900px] -translate-x-1/2 -translate-y-1/2">
+          <circle cx="300" cy="300" r="130" stroke="currentColor" strokeOpacity="0.05" strokeWidth="1" />
+          <circle cx="300" cy="300" r="220" stroke="currentColor" strokeOpacity="0.04" strokeWidth="1" />
+          <circle cx="300" cy="300" r="300" stroke="currentColor" strokeOpacity="0.03" strokeWidth="1" />
+        </svg>
+
         <p className="text-sm font-medium text-muted-foreground uppercase tracking-widest mb-4">
           Introducing Orbit
         </p>
@@ -35,11 +51,42 @@ export default function Home() {
           <Button size="lg">Start for free</Button>
           <Button variant="outline" size="lg">View demo</Button>
         </div>
+
+        {/* Orbital illustration */}
+        <div aria-hidden="true" className="pointer-events-none mt-20 mx-auto max-w-lg opacity-[0.65]">
+          <svg viewBox="0 0 600 280" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
+            <circle cx="300" cy="140" r="130" fill="currentColor" fillOpacity="0.03" />
+            {/* Outer dashed orbit */}
+            <circle cx="300" cy="140" r="175" stroke="currentColor" strokeOpacity="0.18" strokeWidth="1" strokeDasharray="3 9" />
+            <circle cx="125" cy="140" r="5" fill="currentColor" fillOpacity="0.35" />
+            <circle cx="452" cy="228" r="5" fill="currentColor" fillOpacity="0.35" />
+            <circle cx="148" cy="228" r="5" fill="currentColor" fillOpacity="0.35" />
+            {/* Middle dashed orbit */}
+            <circle cx="300" cy="140" r="110" stroke="currentColor" strokeOpacity="0.3" strokeWidth="1.5" strokeDasharray="4 8" />
+            <circle cx="300" cy="30" r="7" fill="currentColor" fillOpacity="0.55" />
+            <circle cx="395" cy="195" r="6" fill="currentColor" fillOpacity="0.5" />
+            <circle cx="205" cy="195" r="6" fill="currentColor" fillOpacity="0.5" />
+            {/* Inner solid orbit */}
+            <circle cx="300" cy="140" r="60" stroke="currentColor" strokeOpacity="0.45" strokeWidth="1.5" />
+            <circle cx="360" cy="140" r="8" fill="currentColor" fillOpacity="0.65" />
+            {/* Center hub */}
+            <circle cx="300" cy="140" r="22" stroke="currentColor" strokeWidth="2" strokeOpacity="0.7" />
+            <circle cx="300" cy="140" r="10" fill="currentColor" fillOpacity="0.8" />
+          </svg>
+        </div>
       </section>
 
       {/* Features */}
-      <section id="features" className="border-t border-border bg-muted/40">
-        <div className="mx-auto max-w-6xl px-6 py-24">
+      <section id="features" className="border-t border-border bg-muted/40 relative overflow-hidden">
+        <svg aria-hidden="true" className="pointer-events-none absolute inset-0 h-full w-full" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="feat-dots" width="32" height="32" patternUnits="userSpaceOnUse">
+              <circle cx="16" cy="16" r="1" fill="currentColor" fillOpacity="0.06" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#feat-dots)" />
+        </svg>
+        <div className="mx-auto max-w-6xl px-6 py-24 relative">
           <h2 className="text-3xl font-bold tracking-tight text-center mb-4">
             Everything you need
           </h2>
