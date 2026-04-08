@@ -10,6 +10,7 @@ export default function Home() {
           <nav className="hidden sm:flex items-center gap-6 text-sm text-muted-foreground">
             <a href="#features" className="hover:text-foreground transition-colors">Features</a>
             <a href="#about" className="hover:text-foreground transition-colors">About</a>
+            <a href="/pricing" className="hover:text-foreground transition-colors">Pricing</a>
           </nav>
           <div className="flex items-center gap-2">
             <Button variant="ghost" size="sm">Sign in</Button>
